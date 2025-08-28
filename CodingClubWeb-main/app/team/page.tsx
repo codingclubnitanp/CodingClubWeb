@@ -8,7 +8,7 @@ import { Github, Linkedin, Twitter, Mail } from "lucide-react"
 const teamMembers = {
   coreCommittee: [
     {
-      name: "Banda Tharun",
+      name: "Banda Harsha",
       position: "Secretary",
       image: "/professional-male-student-president.png",
       bio: "Final year CSE student passionate about full-stack development and competitive programming.",
