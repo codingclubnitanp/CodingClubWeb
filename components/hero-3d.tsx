@@ -5,7 +5,7 @@ import { Canvas, useFrame } from "@react-three/fiber"
 import { Points, PointMaterial } from "@react-three/drei"
 
 function Stars(props: any) {
-  const ref = useRef<any>()
+  const ref = useRef<any>(null)
 
   // Generate particle positions manually to avoid NaN issues
   const positions = useMemo(() => {
@@ -42,7 +42,7 @@ function Stars(props: any) {
 }
 
 function FloatingCube() {
-  const meshRef = useRef<any>()
+  const meshRef = useRef<any>(null)
 
   useFrame((state) => {
     if (meshRef.current) {
