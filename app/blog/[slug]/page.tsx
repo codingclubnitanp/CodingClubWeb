@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, use } from "react"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -200,11 +200,12 @@ Happy coding! 🚀
   return posts.find((post) => post.slug === slug)
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params)
   const [readingProgress, setReadingProgress] = useState(0)
   const [isLiked, setIsLiked] = useState(false)
   const [isBookmarked, setIsBookmarked] = useState(false)
-  const post = getBlogPost(params.slug)
+  const post = getBlogPost(slug)
 
   useEffect(() => {
     const handleScroll = () => {

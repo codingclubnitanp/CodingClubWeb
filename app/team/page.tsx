@@ -696,7 +696,20 @@ const facultyAdvisor = {
 }
 
 
-function MemberGrid({ members }) {
+interface TeamMember {
+  name: string;
+  position: string;
+  image: string;
+  bio?: string;
+  skills?: string[];
+  social?: {
+    github?: string;
+    linkedin?: string;
+    twitter?: string;
+  };
+}
+
+function MemberGrid({ members }: { members: TeamMember[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {members.map((member) => (
@@ -714,9 +727,9 @@ function MemberGrid({ members }) {
             {member.bio && <p className="text-[#B0B0B0] text-sm mb-4 leading-relaxed flex-grow">{member.bio}</p>}
             
             {/* Skills Section */}
-            {member.skills?.length > 0 && (
+            {(member.skills?.length ?? 0) > 0 && (
               <div className="flex flex-wrap gap-1 mb-4 justify-center">
-                {member.skills.slice(0, 3).map((skill) => (
+                {member.skills?.slice(0, 3).map((skill) => (
                   <span
                     key={skill}
                     className="px-2 py-1 bg-[#4A90E2]/80 text-white rounded text-xs"
